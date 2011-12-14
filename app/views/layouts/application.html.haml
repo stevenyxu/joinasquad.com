@@ -1,0 +1,11 @@
+!!!
+%html
+  %head
+    %title JoinASquad
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .alert-message.error= alert
+    .alert-message.info= notice
+    = yield
