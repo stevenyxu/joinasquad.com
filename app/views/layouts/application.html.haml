@@ -1,11 +1,18 @@
 !!!
 %html
   %head
-    %title JoinASquad
+    %title joinasquad.com: Let's play together
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    .alert-message.error= alert
-    .alert-message.info= notice
-    = yield
+    .topbar
+      .topbar-inner
+        .container
+          %a.brand{:href => root_path} joinasquad
+    .container
+      - unless alert.nil?
+        .alert-message.error= alert
+      - unless notice.nil?
+        .alert-message.info= notice
+      = yield
