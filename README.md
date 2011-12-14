@@ -17,4 +17,4 @@ I have postgresql 8.4 running locally with ident authentication on my developmen
 
 The ruby environment is rvm 1.10 running ruby 1.9.3-p0. You're going to need a reasonably recent version of the bundler gem installed as well.
 
-Once all the prerequisites are set up, the application should work out of the box. Install the bundled gems with `bundle install`, run the migrations with `bundle exec rake db:migrate` (you may be able to get away with `rake db:migrate` depending on your installed versions of rake), and start the server with `bundle exec passenger start`.
+Once all the prerequisites are set up, the application should work out of the box. Install the bundled gems with `bundle install`, run the migrations with `bundle exec rake db:create` then `bundle exec rake db:migrate` (you may be able to get away with `rake db:create` then `rake db:migrate` depending on your installed versions of rake), and start the server with `bundle exec passenger start`.
