@@ -10,3 +10,9 @@
 section {
   margin-top: 60px;
 }
+
+#fork_me_on_github {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
