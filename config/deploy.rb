@@ -11,11 +11,19 @@ set :user, 'steven'
 set :use_sudo, false
 set :deploy_to, "/home/#{user}/www/#{application}"
 set :deploy_via, :remote_cache
+set :passenger_port, 9999
 
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+    run <<-CMD
+      if [[ -f #{release_path}/tmp/pids/passenger.#{passenger_port}.pid ]]; 
+      then 
+        cd #{deploy_to}/current && bundle exec passenger stop -p #{passenger_port} --pid-file #{release_path}/tmp/pids/passenger.#{passenger_port}.pid;
+      fi
+    CMD
+    # restart passenger standalone on the specified port/environment and as a daemon
+    run "cd #{deploy_to}/current && bundle exec passenger start -e #{rails_env} -p #{passenger_port} -d -a 127.0.0.1"
   end
 end
