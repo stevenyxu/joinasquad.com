@@ -1,5 +1,5 @@
 if ENV['TRAVIS']
-  configs = YAML.load_file(Rails.root.join('test', 'database.yml'))
+  configs = YAML.load_file(Rails.root.join('config', 'database.travis.yml'))
   ActiveRecord::Base.configurations = configs
 
   db_name = ENV['DB'] || 'sqlite'
