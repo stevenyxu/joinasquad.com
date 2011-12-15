@@ -13,10 +13,46 @@ Fork the code at [https://github.com/cairo140/joinasquad.com](https://github.com
 Getting the development environment set up
 ------------------------------------------
 
-I used Ubuntu 11.04 (32-bit) running as a virtual machine on a Windows 7 (64-bit) host as my primary development environment, although the intention is for the application to run on any Linux or OSX box. If you run into compatibility issues, please [file an issue](https://github.com/cairo140/joinasquad.com/issues/new).
+My development environment:
 
-I have postgresql 8.4 running locally with ident authentication on my development machine. The intention is that the site would also work with MySQL or sqlite as well, but I make no particular effort to that end.
+* Ubuntu 11.04 (32-bit) via VirtualBox on Windows 7 (64-bit) host
+* PostgreSQL 8.4
+* rvm 1.10
 
-The ruby environment is rvm 1.10 running ruby 1.9.3-p0. You're going to need a reasonably recent version of the bundler gem installed as well.
+How you might set your environment up:
 
-Once all the prerequisites are set up, the application should work out of the box. Install the bundled gems with `bundle install`, run the migrations with `bundle exec rake db:create` then `bundle exec rake db:migrate` (you may be able to get away with `rake db:create` then `rake db:migrate` depending on your installed versions of rake), and start the server with `bundle exec passenger start`.
+    rvm install 1.9.3-p0
+    git checkout git://github.com/cairo140/joinasquad.com.git
+    cd joinasquad.com # should give you an rvm security prompt
+    ruby --version # confirm this is 1.9.3-p0
+    gem install bundler
+    bundle install
+    bundle exec rake db:create
+    bundle exec rake db:migrate
+    bundle exec passenger start # may take you through an installer
+
+The intention is that, for as long as it is feasible, we make _joinasquad.com_ compatible with SQLite, MySQL, and PostgreSQL. The site runs with PostgreSQL by default, but you're free to use the other adapters. Substitute the final three steps above with these:
+
+    DB=mysql bundle exec rake db:create
+    DB=mysql bundle exec rake db:migrate
+    DB=mysql bundle exec passenger start
+
+Testing
+-------
+
+    bundle exec rake
+
+Did I make a mistake in the README?
+-----------------------------------
+
+If I made a mistake in the README, feel free to [fork the project](https://github.com/cairo140/joinasquad.com/fork_select). From there, you can edit your **README.md** straight through your browser and create a pull request with your changes.
+
+Contribution guidelines
+-----------------------
+
+Patches are welcome.
+
+* The development head is on master for now, so feel free to develop from there.
+* If you need a hand at any point in the contribution process (where to put tests, how to structure a fix, etc.), let me know, and I can help.
+* Pull requests should pass tests on all three `DB` environment settings.
+* Thank you!
