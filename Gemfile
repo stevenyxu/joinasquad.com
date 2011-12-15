@@ -24,6 +24,10 @@ group :development do
   gem 'capistrano'
 end
 
-# group :test do
-#   gem 'ruby-debug19', :require => 'ruby-debug'
-# end
+group :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
