@@ -1,13 +1,8 @@
-postgres:
-  adapter: postgresql
-  database: join_a_squad_test
-  username: postgres
-sqlite:
-  adapter: sqlite3
-  database: ":memory:"
-  timeout: 500
-mysql:
-  adapter: mysql2
-  database: join_a_squad_test
-  username:
-  encoding: utf8
+# travis does not get along with our default database.yml settings
+<% if ENV['DB'].nil? || ENV['DB'] == 'postgres' %>
+  test:
+    username: postgres
+<% elsif ENV['DB'] == 'mysql' %>
+  test:
+    username: ~
+<% end %>
