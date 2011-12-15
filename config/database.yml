@@ -4,7 +4,7 @@ postgres: &postgres
   pool: 5
 sqlite: &sqlite
   adapter: sqlite3
-  database: ":memory:"
+  database: db/<%= Rails.env %>.sqlite3
   timeout: 500
 mysql: &mysql
   adapter: mysql2
