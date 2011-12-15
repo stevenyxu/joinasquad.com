@@ -2,4 +2,6 @@ rvm:
  - 1.9.3
 env:
  - DB=postgres
+ - DB=sqlite
+ - DB=mysql
 script: "bundle exec rake db:drop db:create db:migrate spec"
