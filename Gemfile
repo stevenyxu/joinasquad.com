@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+source 'http://rubyforge.org'
 
 gem 'rails', '3.1.3'
 gem 'pg'
@@ -25,7 +26,8 @@ group :development do
 end
 
 group :test do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  # ruby-debug for 1.9.3 doesn't work well for now
+  # gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :development, :test do
