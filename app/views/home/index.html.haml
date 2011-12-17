@@ -1,0 +1,22 @@
+#home
+  .container
+    .row
+      .span5
+        %h1 Find friends. Play together.
+        :markdown
+          _joinasquad.com_ is a service to help gamers find other gamers.
+      .span11
+        %ul.tabs(data-tabs="tabs")
+          %li.active
+            %a(href="#join") Join
+          %li
+            %a(href="#login") Login
+          %li
+            %a(href="#about") About
+        .tab-content
+          #join.tab-pane.active(name="join")
+            = render :partial => 'devise/registrations/form'
+          #login.tab-pane(name="login")
+            = render :partial => 'devise/sessions/form'
+          #about.tab-pane(name="about")
+            %h2 About us
