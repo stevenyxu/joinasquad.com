@@ -1,0 +1,64 @@
+$back: #24221f;
+$text: #ccc;
+$emph: #fff;
+$comp: #5e7c88;
+$accent: #feb41c;
+
+body {
+  background: image-url("bg.png") repeat $back;
+  color: $text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $emph;
+  font-weight: normal;
+  text-shadow: 1px 1px 2px #111;
+  small {
+    color: $comp;
+    text-shadow: 1px 1px 1px rgba(26, 26, 26, 0.5);
+  }
+}
+
+a {
+  color: $accent;
+  &:hover {
+    color: lighten($accent, 10%);
+  }
+}
+
+.page-header {
+  border-bottom-color: #aaa;
+}
+
+label {
+  color: #aaa;
+}
+
+input, textarea, select {
+  background-color: #eee;
+  border: 1px solid #000;
+}
+
+fieldset legend {
+  color: #fff;
+}
+
+.actions {
+  background-color: rgba(250, 250, 250, 0.06);
+  border-top-color: #444;
+}
+
+.tabs {
+  border-color: #333;
+}
+
+.tabs .active > a {
+  background: image-url("bg.png") repeat $back;
+  border-color: #333 #333 transparent;
+  color: $emph;
+  font-weight: bold;
+}
+
+.tabs > li > a:hover {
+  background-color: transparent;
+}
