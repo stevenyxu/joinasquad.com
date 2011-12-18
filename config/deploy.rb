@@ -1,3 +1,6 @@
+require './config/boot'
+require 'airbrake/capistrano'
+
 set :application, "joinasquad.com"
 set :repository,  "git@github.com:cairo140/joinasquad.com.git"
 

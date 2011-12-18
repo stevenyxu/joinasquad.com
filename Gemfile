@@ -16,6 +16,8 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem 'airbrake'
+
 gem 'haml-rails'
 
 gem 'jquery-rails'
