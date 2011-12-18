@@ -24,4 +24,15 @@ describe 'a user visiting the homepage for the first time' do
     find('.tabs li.active a').text.should == 'Login'
     find('.tab-content .active').should have_content('Remember me')
   end
+
+  it 'can log in with the correct credentials' do
+    User.create!(:email => 'papa@smurf.com', :password => 'password')
+    visit '/'
+    within('#login') do
+      fill_in 'Email', :with => 'papa@smurf.com'
+      fill_in 'Password', :with => 'password'
+      click_on 'Login'
+    end
+    page.should have_content('Signed in successfully')
+  end
 end
