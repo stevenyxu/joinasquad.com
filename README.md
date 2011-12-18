@@ -2,6 +2,7 @@ joinasquad.com
 ==============
 
 [![Build Status](https://secure.travis-ci.org/cairo140/joinasquad.com.png)](http://travis-ci.org/cairo140/joinasquad.com)
+[![Gem Status](https://gemnasium.com/cairo140/joinasquad.com.png?travis)](https://gemnasium.com/cairo140/joinasquad.com)
 
 [joinasquad.com](http://www.joinasquad.com/) is a service ad-hoc online matchmaking---a hookup site for online games. Visit the site for more.
 
