@@ -35,9 +35,9 @@ group :test do
   # ruby-debug for 1.9.3 doesn't work well for now
   # gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'capybara'
-  gem 'factory_girl'
 end
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
