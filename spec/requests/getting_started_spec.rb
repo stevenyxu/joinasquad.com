@@ -3,14 +3,12 @@ require 'spec_helper'
 describe 'a user visiting the homepage for the first time' do
   it 'can register and sign in' do
     visit '/'
-    page.should have_content('Email')
-    page.should have_content('Password')
+    page.should have_content('Welcome')
     within('#join') do
-      page.should have_content('Join')
       fill_in 'Email', :with => 'user@example.com'
       fill_in 'Password', :with => 'password'
-      fill_in 'Password confirmation', :with => 'password'
+      click_on 'Create a new account'
     end
-    click_link 'Join'
+    page.should have_content('Getting started')
   end
 end
