@@ -1,10 +1,8 @@
 = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = f.error_notification
   %fieldset
-    %legend Join
     .inputs
       = f.input :email, :required => true, :autofocus => true
       = f.input :password, :required => true
-      = f.input :password_confirmation, :required => true
     .actions
-      = f.button :submit, "Join"
+      = f.button :submit, "Create a new account", :class => 'btn large primary'
