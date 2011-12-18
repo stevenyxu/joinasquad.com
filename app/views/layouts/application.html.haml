@@ -15,7 +15,8 @@
             ! <span class="white">joinasquad</span><span class="yellow">.</span><span class="white">com</span>
       %nav
         %ul
-          %li= link_to('Home', root_path)
+          - if user_signed_in?
+            %li= link_to('Logout', destroy_user_session_path, :method => :delete)
     %section#notifications
       .container
         - unless alert.nil?
