@@ -20,7 +20,8 @@
         .tab-content
           - if user_signed_in?
             #getting-started.tab-pane.active(name="getting-started")
-              %h2 Getting started
+              :markdown
+                To get started, please fill in some basic profile information.
           - else
             #login.tab-pane{:class => ('active' if signed_in_before?)}(name="login")
               = render :partial => 'devise/sessions/form'

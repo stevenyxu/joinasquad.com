@@ -5,7 +5,7 @@ describe 'a user visiting the homepage for the first time' do
     visit '/'
     page.should have_content('Welcome')
     within('#join') do
-      fill_in 'Email', :with => 'user@example.com'
+      fill_in 'Email', :with => Faker::Internet.email
       fill_in 'Password', :with => 'password'
       click_on 'Create a new account'
     end
@@ -15,7 +15,7 @@ describe 'a user visiting the homepage for the first time' do
   it 'can log out after registration and have the login tab prevalent' do
     visit '/'
     within('#join') do
-      fill_in 'Email', :with => 'user@example.com'
+      fill_in 'Email', :with => Faker::Internet.email
       fill_in 'Password', :with => 'password'
       click_on 'Create a new account'
     end
@@ -26,13 +26,7 @@ describe 'a user visiting the homepage for the first time' do
   end
 
   it 'can log in with the correct credentials' do
-    User.create!(:email => 'papa@smurf.com', :password => 'password')
-    visit '/'
-    within('#login') do
-      fill_in 'Email', :with => 'papa@smurf.com'
-      fill_in 'Password', :with => 'password'
-      click_on 'Login'
-    end
+    log_in!
     page.should have_content('Signed in successfully')
   end
 end

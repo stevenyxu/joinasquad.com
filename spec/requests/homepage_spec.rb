@@ -5,4 +5,8 @@ describe 'the website' do
     visit '/'
     page.should have_content('joinasquad.com')
   end
+
+  it 'has a link to the homepage if logged in' do
+    log_in!
+  end
 end
