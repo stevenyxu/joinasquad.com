@@ -16,6 +16,8 @@ set :deploy_to, "/home/#{user}/www/#{application}"
 set :deploy_via, :remote_cache
 set :passenger_port, 9999
 
+after 'deploy:update_code', 'deploy:symlink_configs'
+
 namespace :deploy do
   task :start do ; end
   task :stop do ; end
@@ -28,5 +30,9 @@ namespace :deploy do
     CMD
     # restart passenger standalone on the specified port/environment and as a daemon
     run "cd #{deploy_to}/current && bundle exec passenger start -e #{rails_env} -p #{passenger_port} -d -a 127.0.0.1"
+  end
+
+  task :symlink_configs do
+    run "if [[ -d #{shared_path}/config ]]; then ln -fs #{shared_path}/config/* #{release_path}/config/; fi"
   end
 end
