@@ -8,5 +8,6 @@ describe 'the website' do
 
   it 'has a link to the homepage if logged in' do
     log_in!
+    click_link 'Home'
   end
 end
