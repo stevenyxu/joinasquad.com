@@ -1,20 +1,27 @@
 require 'spec_helper'
 
-describe 'someone not signed in' do
-  it 'cannot view a user profile' do
-    user = Factory(:user)
-    visit "/users/#{user.id}"
-    page.should have_content('You need to sign in')
+describe 'a signed in user' do
+  before do
+    @user = log_in!
   end
 
-  it 'can sign in and be redirected back to the profile' do
-    me, him = Factory(:user), Factory(:user)
-    visit "/users/#{him.id}" # should redirect to login page
+  it 'should be able to view own profile and see an edit button' do
+    visit '/'
+    click_link 'Profile'
+    click_link 'Edit'
+  end
 
-    fill_in 'Email', :with => me.email
-    fill_in 'Password', :with => me.password
-    click_on 'Login' # should redirect you back to originally accessed page
+  it 'should be able to edit own profile' do
+    visit '/'
+    click_link 'Profile'
+    page.should have_content(@user.email) # verify it has the old email address
 
-    page.should have_content(him.email)
+    click_link 'Edit'
+    new_email_address = Faker::Internet.email
+    fill_in 'Email', :with => new_email_address
+    click_on 'Update'
+
+    page.should_not have_content(@user.email)
+    page.should have_content(new_email_address)
   end
 end

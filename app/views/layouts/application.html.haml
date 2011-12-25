@@ -17,6 +17,7 @@
         %ul
           %li= link_to 'Home', root_path
           - if user_signed_in?
+            %li= link_to('Profile', current_user)
             %li= link_to('Logout', destroy_user_session_path, :method => :delete)
     %section#notifications
       .container

@@ -1,0 +1,6 @@
+.container
+  %h1 Edit #{@user.email}
+  = simple_form_for @user do |f|
+    = f.input :email
+    .actions
+      = f.button :submit

@@ -1,2 +1,4 @@
-.container
+#user.container{'data-id' => @user.id, 'data-type' => User}
+  - if can? :write, @user
+    = link_to 'Edit', [:edit, @user]
   %h1= @user.email

@@ -6,4 +6,6 @@ def log_in!(user = nil)
     fill_in 'Password', :with => user.password
     click_on 'Login'
   end
+
+  return user
 end

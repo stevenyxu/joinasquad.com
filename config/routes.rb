@@ -4,7 +4,7 @@ JoinASquad::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :edit, :update]
 
   get 'home' => redirect('/') 
 end
