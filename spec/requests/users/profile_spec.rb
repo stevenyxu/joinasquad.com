@@ -24,4 +24,13 @@ describe 'a signed in user' do
     page.should_not have_content(@user.email)
     page.should have_content(new_email_address)
   end
+
+  describe 'given a game' do
+    before do
+      @game = Factory(:game)
+    end
+
+    it 'should be able to add a game to a profile' do
+    end
+  end
 end
