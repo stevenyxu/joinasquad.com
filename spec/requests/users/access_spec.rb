@@ -16,5 +16,6 @@ describe 'someone not signed in' do
     click_on 'Login' # should redirect you back to originally accessed page
 
     page.should have_content(him.email)
+    page.should_not have_content('Edit')
   end
 end
