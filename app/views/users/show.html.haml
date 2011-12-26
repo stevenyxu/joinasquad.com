@@ -2,3 +2,7 @@
   - if can? :write, @user
     = link_to 'Edit', [:edit, @user]
   %h1= @user.email
+  %section
+    %h2 Games
+    - @user.games.each do |game|
+      = game.name

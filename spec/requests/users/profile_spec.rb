@@ -25,12 +25,13 @@ describe 'a signed in user' do
     page.should have_content(new_email_address)
   end
 
-  describe 'given a game' do
-    before do
-      @game = Factory(:game)
-    end
+  it 'should be able to access own profile at /profile' do
+    visit '/profile'
+    page.should have_content(@user.email)
+  end
 
-    it 'should be able to add a game to a profile' do
-    end
+  it 'should be able to access own profile at /users' do
+    visit '/users'
+    page.should have_content(@user.email)
   end
 end
