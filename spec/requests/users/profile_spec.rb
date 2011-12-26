@@ -38,5 +38,8 @@ end
 
 describe 'a not signed in user' do
   it 'should be able to view a user' do
+    @user = Factory(:user)
+    visit user_path(@user)
+    page.should show_profile(@user)
   end
 end
