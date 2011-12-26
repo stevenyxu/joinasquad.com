@@ -28,11 +28,11 @@ class Ability
 
     if user.admin?
       can :read, :all
-    elsif user.persisted?
-      can :read, User
-      can :manage, user
     else
-      # not signed in. can't do anything
+      if user.persisted?
+        can :manage, user
+      end
+      can :read, User
     end
   end
 end

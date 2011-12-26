@@ -14,7 +14,7 @@ describe 'a signed in user' do
   it 'should be able to edit own profile' do
     visit '/'
     click_link 'Profile'
-    page.should have_content(@user.email) # verify it has the old email address
+    page.should show_profile(@user)
 
     click_link 'Edit'
     new_email_address = Faker::Internet.email
@@ -27,11 +27,16 @@ describe 'a signed in user' do
 
   it 'should be able to access own profile at /profile' do
     visit '/profile'
-    page.should have_content(@user.email)
+    page.should show_profile(@user)
   end
 
   it 'should be able to access own profile at /users' do
     visit '/users'
-    page.should have_content(@user.email)
+    page.should show_profile(@user)
+  end
+end
+
+describe 'a not signed in user' do
+  it 'should be able to view a user' do
   end
 end
