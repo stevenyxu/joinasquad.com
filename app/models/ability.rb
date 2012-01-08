@@ -26,13 +26,15 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new
 
+    can :read, Game
+    can :read, User
+
     if user.admin?
       can :read, :all
     else
       if user.persisted?
         can :manage, user
       end
-      can :read, User
     end
   end
 end
