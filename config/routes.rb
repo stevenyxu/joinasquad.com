@@ -4,7 +4,8 @@ JoinASquad::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  resources :users, :only => [:index, :show, :edit, :update]
+  resources :users
+  resources :games
 
   # aliases
   get 'profile' => 'users#index'
