@@ -1,5 +1,3 @@
 class GamesController < ResourcesController
-  def index
-    authorize! :read, Game
-  end
+  load_and_authorize_resource
 end

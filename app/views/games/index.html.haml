@@ -1,1 +1,4 @@
-%h1 Games
+%div#games.container
+  %h1 Games
+  - @games.each do |game|
+    = link_to game.name, game
