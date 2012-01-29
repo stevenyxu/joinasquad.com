@@ -1,9 +1,10 @@
-.container
+.fluid-sidebar
   %h2 Forgot your password?
+.fluid-content
   = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
     = f.error_notification
     .inputs
       = f.input :email, :required => true
-    .actions
-      = f.button :submit, "Send me reset password instructions"
+    .form-actions
+      = f.button :submit, "Send me reset password instructions", :class => 'btn large primary'
   = render :partial => "devise/shared/links"

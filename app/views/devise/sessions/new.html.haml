@@ -1,3 +1,6 @@
-.container
-  = render :partial => 'form'
-  = render :partial => "devise/shared/links", :locals => {:resource_name => resource_name}
+.fluid-content
+  .fluid-sidebar
+    %h2 Sign in
+  .fluid-content
+    = render :partial => 'form'
+    = render :partial => "devise/shared/links", :locals => {:resource_name => resource_name}

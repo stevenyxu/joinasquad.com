@@ -1,15 +1,19 @@
-nav {
-  font-size: 18px;
-  display: inline-block;
-  width: 640px;
-  vertical-align: middle;
-  ul {
-    margin: 0;
-    list-style: outside none;
-    li {
-      display: inline-block;
-      margin-right: 15px;
-      font-weight: bold;
-    }
+body {
+  padding-top: 90px;
+}
+
+.navbar {
+  &.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  .fluid-sidebar {
+    margin-bottom: 0;
+  }
+  .nav > li > a {
+    line-height: 41px;
   }
 }

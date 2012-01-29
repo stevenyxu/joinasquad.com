@@ -1,35 +1,33 @@
 #home
-  .container
-    .row
-      .span5
-        %h1 Find friends. Play together.
+  .fluid-sidebar
+    %h1 Find friends. Play together.
+    :markdown
+      Welcome to _joinasquad.com_, a service built to help gamers find other gamers.
+  .fluid-content
+    %ul.tabs.nav
+      - if user_signed_in?
+        %li
+          %a(href="/getting-started" data-toggle="tab" data-target="#getting-started") Getting started
+      - else
+        %li(class="#{'active' if request.path == new_user_session_path || request.path == '/'}")
+          %a(href="/login" data-toggle="tab" data-target="#login") Login
+        %li(class="#{'active' if request.path == new_user_registration_path}")
+          %a(data-toggle="tab" data-target="#join"){:href => new_user_registration_path} Join
+      %li
+        %a(href="/about" data-toggle="tab" data-target="#about") About
+    .tab-content
+      - if user_signed_in?
+        #getting-started.tab-pane(name="getting-started")
+          :markdown
+            To get started, please fill in some basic profile information.
+      - else
+        #login.tab-pane(name="login" class="#{'active' if request.path == new_user_session_path || request.path == '/'}")
+          = render :partial => 'devise/sessions/form'
+        #join.tab-pane(name="join" class="#{'active' if request.path == new_user_registration_path}")
+          = render :partial => 'devise/registrations/form'
+      #about.tab-pane(name="about")
+        %h2 About us
         :markdown
-          Welcome to _joinasquad.com_, a service built to help gamers find other gamers.
-      .span11
-        %ul.tabs(data-tabs="tabs")
-          - if user_signed_in?
-            %li.active
-              %a(href="#getting-started") Getting started
-          - else
-            %li{:class => ('active' if signed_in_before?)}
-              %a(href="#login") Login
-            %li{:class => ('active' if !signed_in_before?)}
-              %a(href="#join") Join
-          %li
-            %a(href="#about") About
-        .tab-content
-          - if user_signed_in?
-            #getting-started.tab-pane.active(name="getting-started")
-              :markdown
-                To get started, please fill in some basic profile information.
-          - else
-            #login.tab-pane{:class => ('active' if signed_in_before?)}(name="login")
-              = render :partial => 'devise/sessions/form'
-            #join.tab-pane{:class => ('active' if !signed_in_before?)}(name="join")
-              = render :partial => 'devise/registrations/form'
-          #about.tab-pane(name="about")
-            %h2 About us
-            :markdown
-              I built _joinasquad.com_ because gaming is always better with a wingman or wingwoman.
+          I built _joinasquad.com_ because gaming is always better with a wingman or wingwoman.
 
-              The premise of the site is simple. If you want to find someone to play a game with, mark it down on your profile and check out people with similar interests.
+          The premise of the site is simple. If you want to find someone to play a game with, mark it down on your profile and check out people with similar interests.
