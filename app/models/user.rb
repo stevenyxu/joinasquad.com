@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
   has_many :games, :through => :user_games
 
   def admin?
-    false
+    !!self.admin
   end
 end
