@@ -12,6 +12,13 @@ describe Game do
     Factory(:game).should be_valid
   end
 
+  it 'should be deletable' do
+    @game = Factory(:game)
+    Game.find(@game.id).should == @game
+    @game.destroy
+    lambda { Game.find(@game.id) }.should raise_exception
+  end
+
   describe 'in association to a user' do
     it 'should allow subscribing the user to the game through the relation' do
       @game = Factory(:game)

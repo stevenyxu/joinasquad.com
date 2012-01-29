@@ -2,3 +2,4 @@
   = link_to 'Games', games_path
 .fluid-content
   %h1= @game.name
+  = link_to 'Delete game', @game, :method => :delete

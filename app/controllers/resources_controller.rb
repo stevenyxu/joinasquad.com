@@ -17,6 +17,11 @@ class ResourcesController < ApplicationController
     respond_with resource
   end
 
+  def destroy
+    flash[:notice] = 'Successfully deleted.' if resource.destroy
+    respond_with resource
+  end
+
   protected
 
   def resource
