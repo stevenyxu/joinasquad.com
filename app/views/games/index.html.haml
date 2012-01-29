@@ -1,7 +1,8 @@
 .fluid-sidebar
   %h1 Games
 .fluid-content
-  - @games.each do |game|
-    = link_to game.name, game
+  %ul
+    - @games.each do |game|
+      %li= link_to game.name, game
   - if can? :manage, Game
     = link_to 'Add game', new_game_path

@@ -1,0 +1,7 @@
+= simple_form_for @game do |f|
+  = f.error_notification
+  %fieldset
+    .inputs
+      = f.input :name
+    .form-actions
+      = f.button :submit, "Create game", :class => 'btn large primary'
