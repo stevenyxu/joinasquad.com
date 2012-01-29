@@ -1,4 +1,7 @@
-%div#games.container
+.fluid-sidebar
   %h1 Games
+.fluid-content
   - @games.each do |game|
     = link_to game.name, game
+  - if can? :manage, Game
+    = link_to 'Add game', new_game_path

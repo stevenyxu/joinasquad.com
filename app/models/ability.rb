@@ -31,6 +31,7 @@ class Ability
 
     if user.admin?
       can :read, :all
+      can :manage, Game
     else
       if user.persisted?
         can :manage, user
